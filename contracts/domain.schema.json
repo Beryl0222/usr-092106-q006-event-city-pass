@@ -1,6 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "赛事城市联动通行证领域事件",
+  "description": "所有跨系统消息沿用同一事件信封：event_id 全局唯一、occurred_at 为事件实际发生时间、version 为聚合版本（只增不改）。业务字段以扁平方式附在信封上；事件一经接收不得原地改写，更正只能产生后继事件。",
   "type": "object",
   "required": [
     "event_id",
@@ -19,11 +20,29 @@
     "event_type": {
       "type": "string",
       "enum": [
+        "MATCH_SCHEDULED",
+        "MATCH_POSTPONED",
+        "MATCH_CANCELLED",
+        "MATCH_RESCHEDULED",
         "PASS_ISSUED",
+        "COMPANION_LINKED",
+        "ENTITLEMENT_TRANSFERRED",
         "BENEFIT_RESERVED",
         "CAPACITY_RESTRICTED",
+        "RESTRICTION_LIFTED",
+        "MERCHANT_WITHDREW",
+        "BENEFIT_SUBSTITUTE_OFFERED",
+        "BENEFIT_SUBSTITUTE_ACCEPTED",
+        "REROUTE_OPTION_OFFERED",
+        "REROUTE_SELECTED",
         "BENEFIT_REDEEMED",
-        "COMPENSATION_POSTED"
+        "REDEMPTION_REPLAY_REJECTED",
+        "COMPENSATION_POSTED",
+        "COMPENSATION_PAID",
+        "MERCHANT_SETTLEMENT_POSTED",
+        "REDEMPTION_EVIDENCE_ANONYMIZED",
+        "DISTRICT_BASELINE_IMPORTED",
+        "ATTRIBUTION_RECONCILED"
       ]
     },
     "aggregate_type": {
@@ -32,7 +51,12 @@
         "event_schedule",
         "city_pass",
         "benefit_reservation",
-        "merchant_claim"
+        "restriction",
+        "reroute_plan",
+        "compensation_ledger",
+        "merchant_claim",
+        "settlement_batch",
+        "attribution_report"
       ]
     },
     "aggregate_id": {
@@ -50,6 +74,48 @@
     "summary": {
       "type": "string",
       "minLength": 1
+    },
+    "schedule_version": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "赛历版本：改期/取消/重赛产生新版本，旧版本保留可追溯。"
+    },
+    "pass_id": {
+      "type": "string"
+    },
+    "reservation_id": {
+      "type": "string"
+    },
+    "slot_id": {
+      "type": "string",
+      "description": "容量与冻结的最小粒度：限制只冻结受影响时段，不冻结整张通行证。"
+    },
+    "merchant_id": {
+      "type": "string"
+    },
+    "holder_ref": {
+      "type": "string",
+      "description": "实名持票人的不透明引用，禁止写入姓名、证件号等明文个人信息。"
+    },
+    "client_request_id": {
+      "type": "string",
+      "description": "扫码端幂等键：同一预约下同一请求只允许核销一次，断网重传按此键去重。"
+    },
+    "funding_source": {
+      "type": "string",
+      "enum": [
+        "TICKET_ESCROW",
+        "MERCHANT_ESCROW",
+        "CITY_SUBSIDY",
+        "EVENT_INSURANCE",
+        "ORGANIZER"
+      ],
+      "description": "补偿与补贴的资金来源：票款托管、商户预付托管、城市文旅补贴、赛事取消险、主办方。"
+    },
+    "amount_cents": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "金额一律使用最小货币单位（分）的非负整数。"
     }
   },
   "additionalProperties": true
