@@ -1,9 +1,17 @@
 {
   "event_id": "092106-006-sample-001",
   "event_type": "PASS_ISSUED",
-  "aggregate_type": "event_schedule",
-  "aggregate_id": "event_city_pass-001",
+  "aggregate_type": "city_pass",
+  "aggregate_id": "P-SAMPLE-0001",
   "occurred_at": "2026-09-20T15:00:00+08:00",
   "version": 1,
-  "summary": "登记赛事城市联动通行证的首条领域记录"
+  "schedule_version": 1,
+  "correlation_id": "CORR-SAMPLE",
+  "source_system": "CITY_PASS",
+  "summary": "登记赛事城市联动通行证的首条领域记录",
+  "payload": {
+    "ticket_no_hash": "sha256:示例球票哈希",
+    "holder_pseudonym": "H-SAMPLE",
+    "companions": []
+  }
 }

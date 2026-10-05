@@ -1,0 +1,1547 @@
+{
+  "drill": "MATCH-2026-G1 cancellation",
+  "generated_at": "2026-10-05T02:26:51.231Z",
+  "note": "由 scripts/generate-cancellation-drill.mjs 生成；证据哈希链与汇总数可由测试重算复核。",
+  "events": [
+    {
+      "event_id": "EVT-0001",
+      "event_type": "SCHEDULE_PUBLISHED",
+      "aggregate_type": "event_schedule",
+      "aggregate_id": "MATCH-2026-G1",
+      "occurred_at": "2026-09-20T15:00:00+08:00",
+      "version": 1,
+      "summary": "发布 G1 联赛周末三天赛历（10/16–10/18）",
+      "schedule_version": 1,
+      "correlation_id": "CORR-G1-WEEKEND",
+      "source_system": "TICKETING",
+      "payload": {
+        "match_id": "MATCH-2026-G1",
+        "session_windows": [
+          {
+            "date": "2026-10-16",
+            "programs": [
+              "城市暖场",
+              "文体商旅活动"
+            ]
+          },
+          {
+            "date": "2026-10-17",
+            "programs": [
+              "主题线路",
+              "比赛日 19:35 开赛",
+              "第二现场"
+            ]
+          },
+          {
+            "date": "2026-10-18",
+            "programs": [
+              "赛后展览",
+              "城市文化日"
+            ]
+          }
+        ],
+        "capacity_version": "CAP-V1"
+      }
+    },
+    {
+      "event_id": "EVT-0002",
+      "event_type": "PASS_ISSUED",
+      "aggregate_type": "city_pass",
+      "aggregate_id": "P-1001",
+      "occurred_at": "2026-09-22T09:10:00+08:00",
+      "version": 1,
+      "summary": "向原始持证人发放实名通行证 P-1001",
+      "schedule_version": 1,
+      "correlation_id": "CORR-G1-WEEKEND",
+      "source_system": "CITY_PASS",
+      "payload": {
+        "ticket_no_hash": "7d63710b131ae233f862bf7cffe57e4701a4bebf326c2abe5403fff3d762de09",
+        "holder_pseudonym": "H-A0",
+        "companions": []
+      }
+    },
+    {
+      "event_id": "EVT-0003",
+      "event_type": "PASS_QUALIFICATION_TRANSFERRED",
+      "aggregate_type": "city_pass",
+      "aggregate_id": "P-1001",
+      "occurred_at": "2026-10-05T10:30:00+08:00",
+      "version": 2,
+      "summary": "P-1001 按赛事转赠规则完成实名资格转赠 H-A0 → H-A1",
+      "schedule_version": 1,
+      "correlation_id": "CORR-G1-WEEKEND",
+      "source_system": "CITY_PASS",
+      "payload": {
+        "from_pseudonym": "H-A0",
+        "to_pseudonym": "H-A1",
+        "rule_basis": "《联赛门票转赠规则》第 8 条：开赛前 72 小时、限一次、受让人实名",
+        "eligibility_check": {
+          "realname": "PASSED",
+          "blacklist": "PASSED",
+          "transfer_quota_used": 1,
+          "checked_at": "2026-10-05T10:29:50+08:00"
+        },
+        "accepted_at": "2026-10-05T10:30:00+08:00",
+        "prior_chain": [
+          "H-A0"
+        ],
+        "ticket_no_hash": "7d63710b131ae233f862bf7cffe57e4701a4bebf326c2abe5403fff3d762de09"
+      }
+    },
+    {
+      "event_id": "EVT-0004",
+      "event_type": "PASS_COMPANIONS_UPDATED",
+      "aggregate_type": "city_pass",
+      "aggregate_id": "P-1001",
+      "occurred_at": "2026-10-10T20:15:00+08:00",
+      "version": 3,
+      "summary": "P-1001 添加一名同行人",
+      "schedule_version": 1,
+      "correlation_id": "CORR-G1-WEEKEND",
+      "source_system": "CITY_PASS",
+      "payload": {
+        "companions_added": [
+          "H-A1-G1"
+        ],
+        "companions_removed": [],
+        "deadline_policy": "开赛前 24 小时截止"
+      }
+    },
+    {
+      "event_id": "EVT-0005",
+      "event_type": "PASS_ISSUED",
+      "aggregate_type": "city_pass",
+      "aggregate_id": "P-1002",
+      "occurred_at": "2026-09-25T14:00:00+08:00",
+      "version": 1,
+      "summary": "向在途观众 H-B1 发放实名通行证 P-1002",
+      "schedule_version": 1,
+      "correlation_id": "CORR-G1-WEEKEND",
+      "source_system": "CITY_PASS",
+      "payload": {
+        "ticket_no_hash": "b9496ebc8b29665965b415f70ca277bb3bf56a7605eda1ecb236186d0e39442f",
+        "holder_pseudonym": "H-B1",
+        "companions": []
+      }
+    },
+    {
+      "event_id": "EVT-0006",
+      "event_type": "PASS_ISSUED",
+      "aggregate_type": "city_pass",
+      "aggregate_id": "P-1003",
+      "occurred_at": "2026-09-26T11:00:00+08:00",
+      "version": 1,
+      "summary": "发放实名通行证 P-1003（用于争议核销样例）",
+      "schedule_version": 1,
+      "correlation_id": "CORR-G1-WEEKEND",
+      "source_system": "CITY_PASS",
+      "payload": {
+        "ticket_no_hash": "e535e0416f2042ef900a4e4988003c26524f81ca3a5974ab2133f468816af87d",
+        "holder_pseudonym": "H-C1",
+        "companions": []
+      }
+    },
+    {
+      "event_id": "EVT-0007",
+      "event_type": "BENEFIT_RESERVED",
+      "aggregate_type": "benefit_reservation",
+      "aggregate_id": "R-2001",
+      "occurred_at": "2026-10-11T09:00:00+08:00",
+      "version": 1,
+      "summary": "预约 THEME_ROUTE（R-2001）",
+      "schedule_version": 1,
+      "correlation_id": "CORR-G1-WEEKEND",
+      "source_system": "CITY_PASS",
+      "payload": {
+        "pass_id": "P-1001",
+        "status": "RESERVED",
+        "benefit_type": "THEME_ROUTE",
+        "merchant_id": "M-301",
+        "venue_id": "V-RIVERSIDE",
+        "area_id": "A-STADIUM-CORE",
+        "slot_start": "2026-10-17T13:30:00",
+        "slot_end": "2026-10-17T16:30:00",
+        "face_amount": 120
+      }
+    },
+    {
+      "event_id": "EVT-0008",
+      "event_type": "BENEFIT_RESERVED",
+      "aggregate_type": "benefit_reservation",
+      "aggregate_id": "R-2002",
+      "occurred_at": "2026-10-11T09:00:00+08:00",
+      "version": 1,
+      "summary": "预约 HOTEL（R-2002）",
+      "schedule_version": 1,
+      "correlation_id": "CORR-G1-WEEKEND",
+      "source_system": "CITY_PASS",
+      "payload": {
+        "pass_id": "P-1001",
+        "status": "RESERVED",
+        "benefit_type": "HOTEL",
+        "merchant_id": "M-302",
+        "venue_id": "V-HOTEL-RIVERSIDE",
+        "area_id": "A-WATERFRONT",
+        "slot_start": "2026-10-16T20:00:00",
+        "slot_end": "2026-10-17T12:00:00",
+        "face_amount": 600
+      }
+    },
+    {
+      "event_id": "EVT-0009",
+      "event_type": "BENEFIT_RESERVED",
+      "aggregate_type": "benefit_reservation",
+      "aggregate_id": "R-2003",
+      "occurred_at": "2026-10-11T09:00:00+08:00",
+      "version": 1,
+      "summary": "预约 HOTEL（R-2003）",
+      "schedule_version": 1,
+      "correlation_id": "CORR-G1-WEEKEND",
+      "source_system": "CITY_PASS",
+      "payload": {
+        "pass_id": "P-1001",
+        "status": "RESERVED",
+        "benefit_type": "HOTEL",
+        "merchant_id": "M-302",
+        "venue_id": "V-HOTEL-RIVERSIDE",
+        "area_id": "A-WATERFRONT",
+        "slot_start": "2026-10-17T20:00:00",
+        "slot_end": "2026-10-18T12:00:00",
+        "face_amount": 600
+      }
+    },
+    {
+      "event_id": "EVT-0010",
+      "event_type": "BENEFIT_RESERVED",
+      "aggregate_type": "benefit_reservation",
+      "aggregate_id": "R-2004",
+      "occurred_at": "2026-10-11T09:00:00+08:00",
+      "version": 1,
+      "summary": "预约 SECOND_VENUE（R-2004）",
+      "schedule_version": 1,
+      "correlation_id": "CORR-G1-WEEKEND",
+      "source_system": "CITY_PASS",
+      "payload": {
+        "pass_id": "P-1001",
+        "status": "RESERVED",
+        "benefit_type": "SECOND_VENUE",
+        "merchant_id": "M-303",
+        "venue_id": "V-BAR-CENTRAL",
+        "area_id": "A-STADIUM-CORE",
+        "slot_start": "2026-10-17T19:00:00",
+        "slot_end": "2026-10-17T22:00:00",
+        "face_amount": 88
+      }
+    },
+    {
+      "event_id": "EVT-0011",
+      "event_type": "BENEFIT_RESERVED",
+      "aggregate_type": "benefit_reservation",
+      "aggregate_id": "R-2005",
+      "occurred_at": "2026-10-11T09:00:00+08:00",
+      "version": 1,
+      "summary": "预约 F&B（R-2005）",
+      "schedule_version": 1,
+      "correlation_id": "CORR-G1-WEEKEND",
+      "source_system": "CITY_PASS",
+      "payload": {
+        "pass_id": "P-1001",
+        "status": "RESERVED",
+        "benefit_type": "F&B",
+        "merchant_id": "M-304",
+        "venue_id": "V-BISTRO-304",
+        "area_id": "A-STADIUM-CORE",
+        "slot_start": "2026-10-17T12:30:00",
+        "slot_end": "2026-10-17T13:30:00",
+        "face_amount": 60
+      }
+    },
+    {
+      "event_id": "EVT-0012",
+      "event_type": "BENEFIT_RESERVED",
+      "aggregate_type": "benefit_reservation",
+      "aggregate_id": "R-2006",
+      "occurred_at": "2026-10-11T09:00:00+08:00",
+      "version": 1,
+      "summary": "预约 EXHIBITION（R-2006）",
+      "schedule_version": 1,
+      "correlation_id": "CORR-G1-WEEKEND",
+      "source_system": "CITY_PASS",
+      "payload": {
+        "pass_id": "P-1001",
+        "status": "RESERVED",
+        "benefit_type": "EXHIBITION",
+        "merchant_id": "M-306",
+        "venue_id": "V-EXPO-HALL",
+        "area_id": "A-NEWTOWN",
+        "slot_start": "2026-10-18T10:00:00",
+        "slot_end": "2026-10-18T12:00:00",
+        "face_amount": 50
+      }
+    },
+    {
+      "event_id": "EVT-0013",
+      "event_type": "BENEFIT_RESERVED",
+      "aggregate_type": "benefit_reservation",
+      "aggregate_id": "R-2007",
+      "occurred_at": "2026-10-11T09:00:00+08:00",
+      "version": 1,
+      "summary": "预约 CULTURE_VENUE（R-2007）",
+      "schedule_version": 1,
+      "correlation_id": "CORR-G1-WEEKEND",
+      "source_system": "CITY_PASS",
+      "payload": {
+        "pass_id": "P-1001",
+        "status": "RESERVED",
+        "benefit_type": "CULTURE_VENUE",
+        "merchant_id": "M-307",
+        "venue_id": "V-MUSEUM",
+        "area_id": "A-OLDSTREET",
+        "slot_start": "2026-10-16T14:00:00",
+        "slot_end": "2026-10-16T16:00:00",
+        "face_amount": 30
+      }
+    },
+    {
+      "event_id": "EVT-0014",
+      "event_type": "BENEFIT_RESERVED",
+      "aggregate_type": "benefit_reservation",
+      "aggregate_id": "R-2008",
+      "occurred_at": "2026-10-11T09:00:00+08:00",
+      "version": 1,
+      "summary": "预约 SECOND_VENUE（R-2008）",
+      "schedule_version": 1,
+      "correlation_id": "CORR-G1-WEEKEND",
+      "source_system": "CITY_PASS",
+      "payload": {
+        "pass_id": "P-1002",
+        "status": "RESERVED",
+        "benefit_type": "SECOND_VENUE",
+        "merchant_id": "M-309",
+        "venue_id": "V-FANZONE-CORE",
+        "area_id": "A-STADIUM-CORE",
+        "slot_start": "2026-10-17T19:00:00",
+        "slot_end": "2026-10-17T22:00:00",
+        "face_amount": 88
+      }
+    },
+    {
+      "event_id": "EVT-0015",
+      "event_type": "BENEFIT_RESERVED",
+      "aggregate_type": "benefit_reservation",
+      "aggregate_id": "R-2010",
+      "occurred_at": "2026-10-11T09:00:00+08:00",
+      "version": 1,
+      "summary": "预约 F&B（R-2010）",
+      "schedule_version": 1,
+      "correlation_id": "CORR-G1-WEEKEND",
+      "source_system": "CITY_PASS",
+      "payload": {
+        "pass_id": "P-1002",
+        "status": "RESERVED",
+        "benefit_type": "F&B",
+        "merchant_id": "M-304",
+        "venue_id": "V-BISTRO-304",
+        "area_id": "A-STADIUM-CORE",
+        "slot_start": "2026-10-17T11:30:00",
+        "slot_end": "2026-10-17T12:30:00",
+        "face_amount": 60
+      }
+    },
+    {
+      "event_id": "EVT-0016",
+      "event_type": "BENEFIT_RESERVED",
+      "aggregate_type": "benefit_reservation",
+      "aggregate_id": "R-2011",
+      "occurred_at": "2026-10-11T09:00:00+08:00",
+      "version": 1,
+      "summary": "预约 SECOND_VENUE（R-2011）",
+      "schedule_version": 1,
+      "correlation_id": "CORR-G1-WEEKEND",
+      "source_system": "CITY_PASS",
+      "payload": {
+        "pass_id": "P-1003",
+        "status": "RESERVED",
+        "benefit_type": "SECOND_VENUE",
+        "merchant_id": "M-303",
+        "venue_id": "V-BAR-CENTRAL",
+        "area_id": "A-STADIUM-CORE",
+        "slot_start": "2026-10-17T19:00:00",
+        "slot_end": "2026-10-17T22:00:00",
+        "face_amount": 88
+      }
+    },
+    {
+      "event_id": "EVT-0017",
+      "event_type": "BENEFIT_REDEEMED",
+      "aggregate_type": "benefit_reservation",
+      "aggregate_id": "R-2007",
+      "occurred_at": "2026-10-16T14:05:00+08:00",
+      "version": 2,
+      "summary": "商户扫码核销 R-2007（流水 SCN-6001）",
+      "schedule_version": 1,
+      "correlation_id": "CORR-G1-WEEKEND",
+      "source_system": "MERCHANT_POS",
+      "idempotency_key": "SCN-6001",
+      "payload": {
+        "scan_code": "SCN-6001",
+        "device_time": "2026-10-16T14:05:00+08:00",
+        "online": true,
+        "amount": 30,
+        "recorded_at": "2026-10-16T14:05:00+08:00",
+        "merchant_id": "M-307"
+      }
+    },
+    {
+      "event_id": "EVT-0018",
+      "event_type": "BENEFIT_REDEEMED",
+      "aggregate_type": "benefit_reservation",
+      "aggregate_id": "R-2002",
+      "occurred_at": "2026-10-16T16:20:00+08:00",
+      "version": 2,
+      "summary": "商户扫码核销 R-2002（流水 SCN-5001）",
+      "schedule_version": 1,
+      "correlation_id": "CORR-G1-WEEKEND",
+      "source_system": "MERCHANT_POS",
+      "idempotency_key": "SCN-5001",
+      "payload": {
+        "scan_code": "SCN-5001",
+        "device_time": "2026-10-16T16:20:00+08:00",
+        "online": true,
+        "amount": 600,
+        "recorded_at": "2026-10-16T16:20:00+08:00",
+        "merchant_id": "M-302"
+      }
+    },
+    {
+      "event_id": "EVT-0019",
+      "event_type": "CAPACITY_RESTRICTED",
+      "aggregate_type": "benefit_inventory",
+      "aggregate_id": "AREA-A-STADIUM-CORE",
+      "occurred_at": "2026-10-17T10:00:00+08:00",
+      "version": 1,
+      "summary": "公安交管发布核心区限流：10/17 12:00–23:00",
+      "schedule_version": 1,
+      "correlation_id": "CORR-G1-WEEKEND",
+      "source_system": "TRAFFIC_AUTHORITY",
+      "payload": {
+        "authority": "市公安局交通管理局",
+        "area_id": "A-STADIUM-CORE",
+        "effective_from": "2026-10-17T12:00:00",
+        "effective_to": "2026-10-17T23:00:00",
+        "source_ref": "GAJT-20261017-07"
+      }
+    },
+    {
+      "event_id": "EVT-0020",
+      "event_type": "INVENTORY_SLOT_FROZEN",
+      "aggregate_type": "benefit_inventory",
+      "aggregate_id": "INV-M301-1017-AFT",
+      "occurred_at": "2026-10-17T10:15:00+08:00",
+      "version": 1,
+      "summary": "冻结 M-301 主题线路 10/17 下午时段（与限流窗口、核心区相交）",
+      "schedule_version": 1,
+      "correlation_id": "CORR-G1-WEEKEND",
+      "source_system": "CITY_PASS",
+      "payload": {
+        "status": "FROZEN",
+        "area_id": "A-STADIUM-CORE",
+        "frozen_slots": [
+          {
+            "slot_start": "2026-10-17T13:30:00",
+            "slot_end": "2026-10-17T16:30:00",
+            "inventory": 12
+          }
+        ],
+        "reservation_ids_affected": [
+          "R-2001"
+        ]
+      }
+    },
+    {
+      "event_id": "EVT-0021",
+      "event_type": "INVENTORY_SLOT_FROZEN",
+      "aggregate_type": "benefit_inventory",
+      "aggregate_id": "INV-M309-1017-EVE",
+      "occurred_at": "2026-10-17T10:16:00+08:00",
+      "version": 1,
+      "summary": "冻结 M-309 核心区第二现场晚间时段",
+      "schedule_version": 1,
+      "correlation_id": "CORR-G1-WEEKEND",
+      "source_system": "CITY_PASS",
+      "payload": {
+        "status": "FROZEN",
+        "area_id": "A-STADIUM-CORE",
+        "frozen_slots": [
+          {
+            "slot_start": "2026-10-17T19:00:00",
+            "slot_end": "2026-10-17T22:00:00",
+            "inventory": 200
+          }
+        ],
+        "reservation_ids_affected": [
+          "R-2008"
+        ]
+      }
+    },
+    {
+      "event_id": "EVT-0022",
+      "event_type": "MERCHANT_WITHDRAWN",
+      "aggregate_type": "merchant_claim",
+      "aggregate_id": "MC-M-303",
+      "occurred_at": "2026-10-17T11:05:00+08:00",
+      "version": 1,
+      "summary": "M-303 第二现场酒吧临时退出，15:00 起停止承接",
+      "schedule_version": 1,
+      "correlation_id": "CORR-G1-WEEKEND",
+      "source_system": "CITY_PASS",
+      "payload": {
+        "merchant_id": "M-303",
+        "effective_at": "2026-10-17T15:00:00",
+        "outstanding_reservation_ids": [
+          "R-2004",
+          "R-2011"
+        ],
+        "deposit_held": 200
+      }
+    },
+    {
+      "event_id": "EVT-0023",
+      "event_type": "MERCHANT_WITHDRAWN",
+      "aggregate_type": "merchant_claim",
+      "aggregate_id": "MC-M-304",
+      "occurred_at": "2026-10-17T11:10:00+08:00",
+      "version": 1,
+      "summary": "M-304 小馆临时退出，12:00 起停止承接",
+      "schedule_version": 1,
+      "correlation_id": "CORR-G1-WEEKEND",
+      "source_system": "CITY_PASS",
+      "payload": {
+        "merchant_id": "M-304",
+        "effective_at": "2026-10-17T12:00:00",
+        "outstanding_reservation_ids": [
+          "R-2005"
+        ],
+        "deposit_held": 200
+      }
+    },
+    {
+      "event_id": "EVT-0024",
+      "event_type": "SCHEDULE_CANCELLED",
+      "aggregate_type": "event_schedule",
+      "aggregate_id": "MATCH-2026-G1",
+      "occurred_at": "2026-10-17T11:20:00+08:00",
+      "version": 2,
+      "summary": "G1 比赛因极端天气取消，赛历升级到 v2（旧版本保留）",
+      "schedule_version": 2,
+      "correlation_id": "CORR-G1-WEEKEND",
+      "source_system": "TICKETING",
+      "payload": {
+        "reason": "气象部门发布暴雨橙色预警，赛事经主办方与公安会商取消",
+        "authority_refs": [
+          "QX-ORANGE-20261017",
+          "GAJT-20261017-07"
+        ],
+        "affected_window": {
+          "slot_start": "2026-10-17T12:00:00",
+          "slot_end": "2026-10-18T02:00:00"
+        },
+        "reschedule_policy": "未使用权益可原路退或改约替代；已使用权益不退现金"
+      }
+    },
+    {
+      "event_id": "EVT-0025",
+      "event_type": "DIVERSION_OFFERED",
+      "aggregate_type": "diversion_route",
+      "aggregate_id": "DVR-P-1002-1017",
+      "occurred_at": "2026-10-17T11:24:00+08:00",
+      "version": 1,
+      "summary": "向在途观众 H-B1 推送第二现场改道选项（App 推送 + 短信）",
+      "schedule_version": 2,
+      "correlation_id": "CORR-G1-WEEKEND",
+      "source_system": "NOTIFICATION",
+      "payload": {
+        "pass_id": "P-1002",
+        "spectator_state": "IN_TRANSIT",
+        "location_ref": "地铁 2 号线 体育中心站",
+        "channels": [
+          "APP_PUSH",
+          "SMS"
+        ],
+        "options": [
+          {
+            "option_id": "OPT-WESTGATE",
+            "benefit_type": "SECOND_VENUE",
+            "venue_id": "V-FANZONE-WEST",
+            "area_id": "A-WESTGATE",
+            "merchant_id": "M-308",
+            "slots_left": 40,
+            "action_endpoint": "citypass://diversion/OPT-WESTGATE",
+            "valid_until": "2026-10-17T12:00:00"
+          },
+          {
+            "option_id": "OPT-EXPO",
+            "benefit_type": "EXHIBITION",
+            "venue_id": "V-EXPO-HALL",
+            "area_id": "A-NEWTOWN",
+            "merchant_id": "M-306",
+            "slots_left": 120,
+            "action_endpoint": "citypass://diversion/OPT-EXPO",
+            "valid_until": "2026-10-17T12:00:00"
+          }
+        ]
+      }
+    },
+    {
+      "event_id": "EVT-0026",
+      "event_type": "DIVERSION_SELECTED",
+      "aggregate_type": "diversion_route",
+      "aggregate_id": "DVR-P-1002-1017",
+      "occurred_at": "2026-10-17T11:31:00+08:00",
+      "version": 2,
+      "summary": "H-B1 选定城西第二现场改道",
+      "schedule_version": 2,
+      "correlation_id": "CORR-G1-WEEKEND",
+      "source_system": "CITY_PASS",
+      "payload": {
+        "pass_id": "P-1002",
+        "option_id": "OPT-WESTGATE",
+        "selected_at": "2026-10-17T11:31:00",
+        "new_reservation_id": "R-2052"
+      }
+    },
+    {
+      "event_id": "EVT-0027",
+      "event_type": "BENEFIT_RESERVED",
+      "aggregate_type": "benefit_reservation",
+      "aggregate_id": "R-2052",
+      "occurred_at": "2026-10-17T11:31:30+08:00",
+      "version": 1,
+      "summary": "改道落地：M-308 城西第二现场新预约",
+      "schedule_version": 2,
+      "correlation_id": "CORR-G1-WEEKEND",
+      "causation_id": "EVT-0026",
+      "source_system": "CITY_PASS",
+      "payload": {
+        "pass_id": "P-1002",
+        "status": "RESERVED",
+        "benefit_type": "SECOND_VENUE",
+        "merchant_id": "M-308",
+        "venue_id": "V-FANZONE-WEST",
+        "area_id": "A-WESTGATE",
+        "slot_start": "2026-10-17T19:00:00",
+        "slot_end": "2026-10-17T22:00:00",
+        "face_amount": 88,
+        "replaces_reservation_id": "R-2008",
+        "selected_option_id": "OPT-WESTGATE"
+      }
+    },
+    {
+      "event_id": "EVT-0028",
+      "event_type": "COMPENSATION_POSTED",
+      "aggregate_type": "settlement_ledger",
+      "aggregate_id": "LEDGER-G1-1018",
+      "occurred_at": "2026-10-17T11:32:00+08:00",
+      "version": 1,
+      "summary": "R-2008 改道替代至 M-308，不退现金",
+      "schedule_version": 2,
+      "correlation_id": "CORR-G1-WEEKEND",
+      "source_system": "LEDGER",
+      "idempotency_key": "RF-ALT-2008",
+      "payload": {
+        "reservation_id": "R-2008",
+        "usage_state": "UNUSED",
+        "kind": "ALTERNATIVE",
+        "amount": 0,
+        "funding_source": "CITY_CULTURE_TOURISM_SUBSIDY",
+        "alternative_detail": {
+          "new_reservation_id": "R-2052",
+          "pass_id": "P-1002"
+        }
+      }
+    },
+    {
+      "event_id": "EVT-0029",
+      "event_type": "RESERVATION_DISPLACED",
+      "aggregate_type": "benefit_reservation",
+      "aggregate_id": "R-2001",
+      "occurred_at": "2026-10-17T11:40:00+08:00",
+      "version": 2,
+      "summary": "R-2001 因限流与赛历取消被迫处置，提供改约/退款选项",
+      "schedule_version": 2,
+      "correlation_id": "CORR-G1-WEEKEND",
+      "source_system": "CITY_PASS",
+      "payload": {
+        "cause": "RESTRICTION",
+        "cause_event_id": "GAJT-20261017-07",
+        "options": [
+          {
+            "option_id": "REROUTE-1018",
+            "benefit_type": "THEME_ROUTE",
+            "venue_id": "V-RIVERSIDE",
+            "slot_start": "2026-10-18T13:30:00",
+            "slots_left": 8,
+            "face_amount": 150,
+            "action_endpoint": "citypass://displace/R-2001/REROUTE-1018"
+          },
+          {
+            "option_id": "REFUND-FACE",
+            "kind": "REFUND",
+            "amount": 120,
+            "action_endpoint": "citypass://displace/R-2001/REFUND-FACE"
+          }
+        ]
+      }
+    },
+    {
+      "event_id": "EVT-0030",
+      "event_type": "BENEFIT_RESERVED",
+      "aggregate_type": "benefit_reservation",
+      "aggregate_id": "R-2050",
+      "occurred_at": "2026-10-17T11:46:00+08:00",
+      "version": 1,
+      "summary": "R-2001 改约 10/18 主题线路（面值 150，差价 30 由文旅补贴）",
+      "schedule_version": 2,
+      "correlation_id": "CORR-G1-WEEKEND",
+      "source_system": "CITY_PASS",
+      "payload": {
+        "pass_id": "P-1001",
+        "status": "RESERVED",
+        "benefit_type": "THEME_ROUTE",
+        "merchant_id": "M-301",
+        "venue_id": "V-RIVERSIDE",
+        "area_id": "A-STADIUM-CORE",
+        "slot_start": "2026-10-18T13:30:00",
+        "slot_end": "2026-10-18T16:30:00",
+        "face_amount": 150,
+        "replaces_reservation_id": "R-2001",
+        "selected_option_id": "REROUTE-1018"
+      }
+    },
+    {
+      "event_id": "EVT-0031",
+      "event_type": "COMPENSATION_POSTED",
+      "aggregate_type": "settlement_ledger",
+      "aggregate_id": "LEDGER-G1-1018",
+      "occurred_at": "2026-10-17T11:47:00+08:00",
+      "version": 2,
+      "summary": "R-2001 改约差价补贴 30 元（文旅补贴）",
+      "schedule_version": 2,
+      "correlation_id": "CORR-G1-WEEKEND",
+      "source_system": "LEDGER",
+      "idempotency_key": "RF-ALT-2001",
+      "payload": {
+        "reservation_id": "R-2001",
+        "usage_state": "UNUSED",
+        "kind": "ALTERNATIVE",
+        "amount": 30,
+        "funding_source": "CITY_CULTURE_TOURISM_SUBSIDY",
+        "alternative_detail": {
+          "new_reservation_id": "R-2050",
+          "price_difference": 30
+        }
+      }
+    },
+    {
+      "event_id": "EVT-0032",
+      "event_type": "RESERVATION_DISPLACED",
+      "aggregate_type": "benefit_reservation",
+      "aggregate_id": "R-2003",
+      "occurred_at": "2026-10-17T11:50:00+08:00",
+      "version": 2,
+      "summary": "R-2003 酒店次晚因取消落空",
+      "schedule_version": 2,
+      "correlation_id": "CORR-G1-WEEKEND",
+      "source_system": "CITY_PASS",
+      "payload": {
+        "cause": "SCHEDULE_CANCELLED",
+        "options": [
+          {
+            "option_id": "REFUND-FACE",
+            "kind": "REFUND",
+            "amount": 600
+          }
+        ]
+      }
+    },
+    {
+      "event_id": "EVT-0033",
+      "event_type": "COMPENSATION_POSTED",
+      "aggregate_type": "settlement_ledger",
+      "aggregate_id": "LEDGER-G1-1018",
+      "occurred_at": "2026-10-17T11:52:00+08:00",
+      "version": 3,
+      "summary": "R-2003 酒店次晚原路退 600 元（主办方取消保证金）",
+      "schedule_version": 2,
+      "correlation_id": "CORR-G1-WEEKEND",
+      "source_system": "LEDGER",
+      "idempotency_key": "RF-2026-0003",
+      "payload": {
+        "reservation_id": "R-2003",
+        "usage_state": "UNUSED",
+        "kind": "REFUND",
+        "amount": 600,
+        "funding_source": "ORGANIZER_CANCELLATION_FUND",
+        "refund_channel": "ORIGINAL_PAYMENT_CHANNEL"
+      }
+    },
+    {
+      "event_id": "EVT-0034",
+      "event_type": "RESERVATION_DISPLACED",
+      "aggregate_type": "benefit_reservation",
+      "aggregate_id": "R-2004",
+      "occurred_at": "2026-10-17T11:55:00+08:00",
+      "version": 2,
+      "summary": "R-2004 因商户 M-303 退出落空，周边同时段无替代席位",
+      "schedule_version": 2,
+      "correlation_id": "CORR-G1-WEEKEND",
+      "source_system": "CITY_PASS",
+      "payload": {
+        "cause": "MERCHANT_WITHDRAWAL",
+        "cause_event_id": "EVT-0022",
+        "options": [
+          {
+            "option_id": "REFUND-DEPOSIT",
+            "kind": "REFUND",
+            "amount": 88
+          }
+        ]
+      }
+    },
+    {
+      "event_id": "EVT-0035",
+      "event_type": "COMPENSATION_POSTED",
+      "aggregate_type": "settlement_ledger",
+      "aggregate_id": "LEDGER-G1-1018",
+      "occurred_at": "2026-10-17T11:57:00+08:00",
+      "version": 4,
+      "summary": "R-2004 退款 88 元由违约商户 M-303 自担（保证金划付）",
+      "schedule_version": 2,
+      "correlation_id": "CORR-G1-WEEKEND",
+      "source_system": "LEDGER",
+      "idempotency_key": "RF-2026-0004",
+      "payload": {
+        "reservation_id": "R-2004",
+        "usage_state": "UNUSED",
+        "kind": "REFUND",
+        "amount": 88,
+        "funding_source": "MERCHANT_SELF_BORNE",
+        "liable_merchant_id": "M-303",
+        "refund_channel": "ORIGINAL_PAYMENT_CHANNEL"
+      }
+    },
+    {
+      "event_id": "EVT-0036",
+      "event_type": "RESERVATION_DISPLACED",
+      "aggregate_type": "benefit_reservation",
+      "aggregate_id": "R-2005",
+      "occurred_at": "2026-10-17T11:58:00+08:00",
+      "version": 2,
+      "summary": "R-2005 因商户 M-304 退出，调度替补商户 M-305",
+      "schedule_version": 2,
+      "correlation_id": "CORR-G1-WEEKEND",
+      "source_system": "CITY_PASS",
+      "payload": {
+        "cause": "MERCHANT_WITHDRAWAL",
+        "options": [
+          {
+            "option_id": "REPLACE-M305",
+            "benefit_type": "F&B",
+            "venue_id": "V-BISTRO-305",
+            "merchant_id": "M-305",
+            "slot_start": "2026-10-17T12:30:00",
+            "slots_left": 16,
+            "face_amount": 70
+          }
+        ]
+      }
+    },
+    {
+      "event_id": "EVT-0037",
+      "event_type": "BENEFIT_RESERVED",
+      "aggregate_type": "benefit_reservation",
+      "aggregate_id": "R-2051",
+      "occurred_at": "2026-10-17T12:01:00+08:00",
+      "version": 1,
+      "summary": "R-2005 转替补商户 M-305（面值 70）",
+      "schedule_version": 2,
+      "correlation_id": "CORR-G1-WEEKEND",
+      "source_system": "CITY_PASS",
+      "payload": {
+        "pass_id": "P-1001",
+        "status": "RESERVED",
+        "benefit_type": "F&B",
+        "merchant_id": "M-305",
+        "venue_id": "V-BISTRO-305",
+        "area_id": "A-STADIUM-CORE",
+        "slot_start": "2026-10-17T12:30:00",
+        "slot_end": "2026-10-17T13:30:00",
+        "face_amount": 70,
+        "replaces_reservation_id": "R-2005",
+        "selected_option_id": "REPLACE-M305"
+      }
+    },
+    {
+      "event_id": "EVT-0038",
+      "event_type": "COMPENSATION_POSTED",
+      "aggregate_type": "settlement_ledger",
+      "aggregate_id": "LEDGER-G1-1018",
+      "occurred_at": "2026-10-17T12:02:00+08:00",
+      "version": 5,
+      "summary": "替补差额 10 元由 M-304 保证金抵扣给 M-305",
+      "schedule_version": 2,
+      "correlation_id": "CORR-G1-WEEKEND",
+      "source_system": "LEDGER",
+      "idempotency_key": "RF-ALT-2005",
+      "payload": {
+        "reservation_id": "R-2005",
+        "usage_state": "UNUSED",
+        "kind": "ALTERNATIVE",
+        "amount": 10,
+        "funding_source": "MERCHANT_DEPOSIT_OFFSET",
+        "liable_merchant_id": "M-304",
+        "alternative_detail": {
+          "new_reservation_id": "R-2051",
+          "price_difference": 10
+        }
+      }
+    },
+    {
+      "event_id": "EVT-0039",
+      "event_type": "RESERVATION_DISPLACED",
+      "aggregate_type": "benefit_reservation",
+      "aggregate_id": "R-2011",
+      "occurred_at": "2026-10-17T12:05:00+08:00",
+      "version": 2,
+      "summary": "R-2011 因 M-303 退出进入处置，晚间出现争议扫码，暂挂起",
+      "schedule_version": 2,
+      "correlation_id": "CORR-G1-WEEKEND",
+      "source_system": "CITY_PASS",
+      "payload": {
+        "cause": "MERCHANT_WITHDRAWAL",
+        "resolution": "PENDING_REVIEW",
+        "options": []
+      }
+    },
+    {
+      "event_id": "EVT-0040",
+      "event_type": "BENEFIT_REDEEMED",
+      "aggregate_type": "benefit_reservation",
+      "aggregate_id": "R-2010",
+      "occurred_at": "2026-10-17T11:40:00+08:00",
+      "version": 2,
+      "summary": "商户扫码核销 R-2010（流水 SCN-7777）",
+      "schedule_version": 1,
+      "correlation_id": "CORR-G1-WEEKEND",
+      "source_system": "MERCHANT_POS",
+      "idempotency_key": "SCN-7777",
+      "payload": {
+        "scan_code": "SCN-7777",
+        "device_time": "2026-10-17T11:40:00+08:00",
+        "online": false,
+        "amount": 60,
+        "recorded_at": "2026-10-17T13:10:00+08:00",
+        "merchant_id": "M-304"
+      }
+    },
+    {
+      "event_id": "EVT-0041",
+      "event_type": "BENEFIT_REDEEMED",
+      "aggregate_type": "benefit_reservation",
+      "aggregate_id": "R-2051",
+      "occurred_at": "2026-10-17T12:35:00+08:00",
+      "version": 2,
+      "summary": "商户扫码核销 R-2051（流水 SCN-7200）",
+      "schedule_version": 1,
+      "correlation_id": "CORR-G1-WEEKEND",
+      "source_system": "MERCHANT_POS",
+      "idempotency_key": "SCN-7200",
+      "payload": {
+        "scan_code": "SCN-7200",
+        "device_time": "2026-10-17T12:35:00+08:00",
+        "online": true,
+        "amount": 70,
+        "recorded_at": "2026-10-17T12:35:00+08:00",
+        "merchant_id": "M-305"
+      }
+    },
+    {
+      "event_id": "EVT-0042",
+      "event_type": "BENEFIT_REDEEMED",
+      "aggregate_type": "benefit_reservation",
+      "aggregate_id": "R-2011",
+      "occurred_at": "2026-10-17T18:40:00+08:00",
+      "version": 3,
+      "summary": "商户扫码核销 R-2011（流水 SCN-9001）",
+      "schedule_version": 1,
+      "correlation_id": "CORR-G1-WEEKEND",
+      "source_system": "MERCHANT_POS",
+      "idempotency_key": "SCN-9001",
+      "payload": {
+        "scan_code": "SCN-9001",
+        "device_time": "2026-10-17T18:40:00+08:00",
+        "online": true,
+        "amount": 88,
+        "recorded_at": "2026-10-17T18:40:00+08:00",
+        "merchant_id": "M-303"
+      }
+    },
+    {
+      "event_id": "EVT-0043",
+      "event_type": "BENEFIT_REDEEMED",
+      "aggregate_type": "benefit_reservation",
+      "aggregate_id": "R-2052",
+      "occurred_at": "2026-10-17T19:35:00+08:00",
+      "version": 2,
+      "summary": "商户扫码核销 R-2052（流水 SCN-7100）",
+      "schedule_version": 1,
+      "correlation_id": "CORR-G1-WEEKEND",
+      "source_system": "MERCHANT_POS",
+      "idempotency_key": "SCN-7100",
+      "payload": {
+        "scan_code": "SCN-7100",
+        "device_time": "2026-10-17T19:35:00+08:00",
+        "online": true,
+        "amount": 88,
+        "recorded_at": "2026-10-17T19:35:00+08:00",
+        "merchant_id": "M-308"
+      }
+    },
+    {
+      "event_id": "EVT-EVID-0001",
+      "event_type": "REDEMPTION_EVIDENCE_RECORDED",
+      "aggregate_type": "redemption_evidence",
+      "aggregate_id": "EVB-G1-1018",
+      "occurred_at": "2026-10-16T14:05:00+08:00",
+      "version": 1,
+      "summary": "匿名化核销证据 E-1（SETTLED）",
+      "schedule_version": 1,
+      "correlation_id": "CORR-G1-WEEKEND",
+      "source_system": "ANALYTICS",
+      "payload": {
+        "prev_hash": "GENESIS",
+        "evidence_hash": "fd16ff1c4c070f225e89083dd861a33e83a1c704fa36c7431bb1a3831a43f874",
+        "evidence_id": "E-1",
+        "holder_key": "6273f4f72dce8bad12fa0eed2015900698157460aba892699469a027943fd795",
+        "ticket_no_hash": "7d63710b131ae233f862bf7cffe57e4701a4bebf326c2abe5403fff3d762de09",
+        "scan_code": "SCN-6001",
+        "merchant_id": "M-307",
+        "venue_id": "V-MUSEUM",
+        "area_id": "A-OLDSTREET",
+        "benefit_type": "CULTURE_VENUE",
+        "amount": 30,
+        "face_amount": 30,
+        "redeemed_slot_start": "2026-10-16T14:00:00",
+        "device_time": "2026-10-16T14:05:00",
+        "online": true,
+        "recorded_at": "2026-10-16T14:05:00",
+        "settlement_status": "SETTLED"
+      }
+    },
+    {
+      "event_id": "EVT-EVID-0002",
+      "event_type": "REDEMPTION_EVIDENCE_RECORDED",
+      "aggregate_type": "redemption_evidence",
+      "aggregate_id": "EVB-G1-1018",
+      "occurred_at": "2026-10-16T16:20:00+08:00",
+      "version": 2,
+      "summary": "匿名化核销证据 E-2（SETTLED）",
+      "schedule_version": 1,
+      "correlation_id": "CORR-G1-WEEKEND",
+      "source_system": "ANALYTICS",
+      "payload": {
+        "prev_hash": "fd16ff1c4c070f225e89083dd861a33e83a1c704fa36c7431bb1a3831a43f874",
+        "evidence_hash": "37995b3085cf56222ef5d5ada4e8a8a3b0a1700dbffb80162138c35cc0c11e49",
+        "evidence_id": "E-2",
+        "holder_key": "6273f4f72dce8bad12fa0eed2015900698157460aba892699469a027943fd795",
+        "ticket_no_hash": "7d63710b131ae233f862bf7cffe57e4701a4bebf326c2abe5403fff3d762de09",
+        "scan_code": "SCN-5001",
+        "merchant_id": "M-302",
+        "venue_id": "V-HOTEL-RIVERSIDE",
+        "area_id": "A-WATERFRONT",
+        "benefit_type": "HOTEL",
+        "amount": 600,
+        "face_amount": 600,
+        "redeemed_slot_start": "2026-10-16T20:00:00",
+        "device_time": "2026-10-16T16:20:00",
+        "online": true,
+        "recorded_at": "2026-10-16T16:20:00",
+        "settlement_status": "SETTLED"
+      }
+    },
+    {
+      "event_id": "EVT-EVID-0003",
+      "event_type": "REDEMPTION_EVIDENCE_RECORDED",
+      "aggregate_type": "redemption_evidence",
+      "aggregate_id": "EVB-G1-1018",
+      "occurred_at": "2026-10-17T13:10:00+08:00",
+      "version": 3,
+      "summary": "匿名化核销证据 E-3（SETTLED）",
+      "schedule_version": 2,
+      "correlation_id": "CORR-G1-WEEKEND",
+      "source_system": "ANALYTICS",
+      "payload": {
+        "prev_hash": "37995b3085cf56222ef5d5ada4e8a8a3b0a1700dbffb80162138c35cc0c11e49",
+        "evidence_hash": "bfd17ee09395853965d37da5f49d9f345a1d49042e1e048fe8ba6d9eda75765d",
+        "evidence_id": "E-3",
+        "holder_key": "f431612d113e3e5134185f1d1bba57a085a11ba6906bf8cf32683731972c91e0",
+        "ticket_no_hash": "b9496ebc8b29665965b415f70ca277bb3bf56a7605eda1ecb236186d0e39442f",
+        "scan_code": "SCN-7777",
+        "merchant_id": "M-304",
+        "venue_id": "V-BISTRO-304",
+        "area_id": "A-STADIUM-CORE",
+        "benefit_type": "F&B",
+        "amount": 60,
+        "face_amount": 60,
+        "redeemed_slot_start": "2026-10-17T11:30:00",
+        "device_time": "2026-10-17T11:40:00",
+        "online": false,
+        "recorded_at": "2026-10-17T13:10:00",
+        "settlement_status": "SETTLED"
+      }
+    },
+    {
+      "event_id": "EVT-EVID-0004",
+      "event_type": "REDEMPTION_EVIDENCE_RECORDED",
+      "aggregate_type": "redemption_evidence",
+      "aggregate_id": "EVB-G1-1018",
+      "occurred_at": "2026-10-17T12:35:00+08:00",
+      "version": 4,
+      "summary": "匿名化核销证据 E-6（SETTLED）",
+      "schedule_version": 2,
+      "correlation_id": "CORR-G1-WEEKEND",
+      "source_system": "ANALYTICS",
+      "payload": {
+        "prev_hash": "bfd17ee09395853965d37da5f49d9f345a1d49042e1e048fe8ba6d9eda75765d",
+        "evidence_hash": "9776c20c3bbb9c788a03e7b63400e6a18ca01ab75e1ad0f4c26eb21d0bf59de8",
+        "evidence_id": "E-6",
+        "holder_key": "6273f4f72dce8bad12fa0eed2015900698157460aba892699469a027943fd795",
+        "ticket_no_hash": "7d63710b131ae233f862bf7cffe57e4701a4bebf326c2abe5403fff3d762de09",
+        "scan_code": "SCN-7200",
+        "merchant_id": "M-305",
+        "venue_id": "V-BISTRO-305",
+        "area_id": "A-STADIUM-CORE",
+        "benefit_type": "F&B",
+        "amount": 70,
+        "face_amount": 70,
+        "redeemed_slot_start": "2026-10-17T12:30:00",
+        "device_time": "2026-10-17T12:35:00",
+        "online": true,
+        "recorded_at": "2026-10-17T12:35:00",
+        "settlement_status": "SETTLED"
+      }
+    },
+    {
+      "event_id": "EVT-EVID-0005",
+      "event_type": "REDEMPTION_EVIDENCE_RECORDED",
+      "aggregate_type": "redemption_evidence",
+      "aggregate_id": "EVB-G1-1018",
+      "occurred_at": "2026-10-17T18:40:00+08:00",
+      "version": 5,
+      "summary": "匿名化核销证据 E-4（PENDING_REVIEW）",
+      "schedule_version": 2,
+      "correlation_id": "CORR-G1-WEEKEND",
+      "source_system": "ANALYTICS",
+      "payload": {
+        "prev_hash": "9776c20c3bbb9c788a03e7b63400e6a18ca01ab75e1ad0f4c26eb21d0bf59de8",
+        "evidence_hash": "3879c7c89bc99c74a39d3f4e9ebf51c0257b99f77d0572787dc0c7950ffaa6af",
+        "evidence_id": "E-4",
+        "holder_key": "cc3d309dae50b0473747d53f555832c23a4ac9b24fb8f06adfb4ac7998a7ea57",
+        "ticket_no_hash": "e535e0416f2042ef900a4e4988003c26524f81ca3a5974ab2133f468816af87d",
+        "scan_code": "SCN-9001",
+        "merchant_id": "M-303",
+        "venue_id": "V-BAR-CENTRAL",
+        "area_id": "A-STADIUM-CORE",
+        "benefit_type": "SECOND_VENUE",
+        "amount": 88,
+        "face_amount": 88,
+        "redeemed_slot_start": "2026-10-17T19:00:00",
+        "device_time": "2026-10-17T18:40:00",
+        "online": true,
+        "recorded_at": "2026-10-17T18:40:00",
+        "settlement_status": "PENDING_REVIEW",
+        "review_reason": "设备时间晚于商户退出生效时间（15:00）"
+      }
+    },
+    {
+      "event_id": "EVT-EVID-0006",
+      "event_type": "REDEMPTION_EVIDENCE_RECORDED",
+      "aggregate_type": "redemption_evidence",
+      "aggregate_id": "EVB-G1-1018",
+      "occurred_at": "2026-10-17T19:35:00+08:00",
+      "version": 6,
+      "summary": "匿名化核销证据 E-5（SETTLED）",
+      "schedule_version": 2,
+      "correlation_id": "CORR-G1-WEEKEND",
+      "source_system": "ANALYTICS",
+      "payload": {
+        "prev_hash": "3879c7c89bc99c74a39d3f4e9ebf51c0257b99f77d0572787dc0c7950ffaa6af",
+        "evidence_hash": "becf9bbb2ba5ccc2d3a9bbaf934f6bfd5283f2f08ffdd7086ef688a3c53f4adc",
+        "evidence_id": "E-5",
+        "holder_key": "f431612d113e3e5134185f1d1bba57a085a11ba6906bf8cf32683731972c91e0",
+        "ticket_no_hash": "b9496ebc8b29665965b415f70ca277bb3bf56a7605eda1ecb236186d0e39442f",
+        "scan_code": "SCN-7100",
+        "merchant_id": "M-308",
+        "venue_id": "V-FANZONE-WEST",
+        "area_id": "A-WESTGATE",
+        "benefit_type": "SECOND_VENUE",
+        "amount": 88,
+        "face_amount": 88,
+        "redeemed_slot_start": "2026-10-17T19:00:00",
+        "device_time": "2026-10-17T19:35:00",
+        "online": true,
+        "recorded_at": "2026-10-17T19:35:00",
+        "settlement_status": "SETTLED"
+      }
+    },
+    {
+      "event_id": "EVT-0050",
+      "event_type": "EVIDENCE_BATCH_SEALED",
+      "aggregate_type": "redemption_evidence",
+      "aggregate_id": "EVB-G1-1018",
+      "occurred_at": "2026-10-18T09:00:00+08:00",
+      "version": 7,
+      "summary": "处置窗口证据批次封档（含 6 条证据，其中 1 条待裁定）",
+      "schedule_version": 2,
+      "correlation_id": "CORR-G1-WEEKEND",
+      "source_system": "ANALYTICS",
+      "payload": {
+        "batch_id": "EVB-G1-1018",
+        "evidence_ids": [
+          "E-1",
+          "E-2",
+          "E-3",
+          "E-6",
+          "E-4",
+          "E-5"
+        ],
+        "prev_hash": "GENESIS",
+        "evidence_hashes": [
+          "fd16ff1c4c070f225e89083dd861a33e83a1c704fa36c7431bb1a3831a43f874",
+          "37995b3085cf56222ef5d5ada4e8a8a3b0a1700dbffb80162138c35cc0c11e49",
+          "bfd17ee09395853965d37da5f49d9f345a1d49042e1e048fe8ba6d9eda75765d",
+          "9776c20c3bbb9c788a03e7b63400e6a18ca01ab75e1ad0f4c26eb21d0bf59de8",
+          "3879c7c89bc99c74a39d3f4e9ebf51c0257b99f77d0572787dc0c7950ffaa6af",
+          "becf9bbb2ba5ccc2d3a9bbaf934f6bfd5283f2f08ffdd7086ef688a3c53f4adc"
+        ],
+        "batch_hash": "6ca433bbdfbea21b2f5d97a6a0551e56a22f61b809c6a2b0f3d14e497147da5a"
+      }
+    },
+    {
+      "event_id": "EVT-0051",
+      "event_type": "MERCHANT_CLAIM_SETTLED",
+      "aggregate_type": "merchant_claim",
+      "aggregate_id": "CL-M-307",
+      "occurred_at": "2026-10-18T09:30:00+08:00",
+      "version": 1,
+      "summary": "M-307 博物馆按真实核销结算 30 元",
+      "schedule_version": 2,
+      "correlation_id": "CORR-G1-WEEKEND",
+      "source_system": "LEDGER",
+      "payload": {
+        "merchant_id": "M-307",
+        "evidence_ids": [
+          "E-1"
+        ],
+        "gross_face": 30,
+        "merchant_discount": 0,
+        "net_payable": 30,
+        "deposit_forfeited": 0,
+        "funding_breakdown": [
+          {
+            "funding_source": "PASS_PREPAID_FUNDS",
+            "amount": 30
+          }
+        ]
+      }
+    },
+    {
+      "event_id": "EVT-0052",
+      "event_type": "MERCHANT_CLAIM_SETTLED",
+      "aggregate_type": "merchant_claim",
+      "aggregate_id": "CL-M-302",
+      "occurred_at": "2026-10-18T09:31:00+08:00",
+      "version": 1,
+      "summary": "M-302 酒店首晚真实核销面值 600 元，协议让利 60 元，应付 540 元",
+      "schedule_version": 2,
+      "correlation_id": "CORR-G1-WEEKEND",
+      "source_system": "LEDGER",
+      "payload": {
+        "merchant_id": "M-302",
+        "evidence_ids": [
+          "E-2"
+        ],
+        "gross_face": 600,
+        "merchant_discount": 60,
+        "net_payable": 540,
+        "deposit_forfeited": 0,
+        "funding_breakdown": [
+          {
+            "funding_source": "PASS_PREPAID_FUNDS",
+            "amount": 540
+          }
+        ]
+      }
+    },
+    {
+      "event_id": "EVT-0053",
+      "event_type": "MERCHANT_CLAIM_SETTLED",
+      "aggregate_type": "merchant_claim",
+      "aggregate_id": "CL-M-304",
+      "occurred_at": "2026-10-18T09:32:00+08:00",
+      "version": 1,
+      "summary": "M-304 退出前离线扫码真实核销 60 元照付；违约保证金另抵扣 10 元给替补商户",
+      "schedule_version": 2,
+      "correlation_id": "CORR-G1-WEEKEND",
+      "source_system": "LEDGER",
+      "payload": {
+        "merchant_id": "M-304",
+        "evidence_ids": [
+          "E-3"
+        ],
+        "gross_face": 60,
+        "merchant_discount": 0,
+        "net_payable": 60,
+        "deposit_forfeited": 10,
+        "funding_breakdown": [
+          {
+            "funding_source": "PASS_PREPAID_FUNDS",
+            "amount": 60
+          }
+        ]
+      }
+    },
+    {
+      "event_id": "EVT-0054",
+      "event_type": "MERCHANT_CLAIM_SETTLED",
+      "aggregate_type": "merchant_claim",
+      "aggregate_id": "CL-M-305",
+      "occurred_at": "2026-10-18T09:33:00+08:00",
+      "version": 1,
+      "summary": "替补商户 M-305 承接履约 70 元：60 元预售池 + 10 元 M-304 违约保证金抵扣",
+      "schedule_version": 2,
+      "correlation_id": "CORR-G1-WEEKEND",
+      "source_system": "LEDGER",
+      "payload": {
+        "merchant_id": "M-305",
+        "evidence_ids": [
+          "E-6"
+        ],
+        "gross_face": 70,
+        "merchant_discount": 0,
+        "net_payable": 70,
+        "deposit_forfeited": 0,
+        "funding_breakdown": [
+          {
+            "funding_source": "PASS_PREPAID_FUNDS",
+            "amount": 60
+          },
+          {
+            "funding_source": "MERCHANT_DEPOSIT_OFFSET",
+            "amount": 10
+          }
+        ]
+      }
+    },
+    {
+      "event_id": "EVT-0055",
+      "event_type": "MERCHANT_CLAIM_SETTLED",
+      "aggregate_type": "merchant_claim",
+      "aggregate_id": "CL-M-308",
+      "occurred_at": "2026-10-18T09:34:00+08:00",
+      "version": 1,
+      "summary": "改道承接商户 M-308 按真实核销结算 88 元",
+      "schedule_version": 2,
+      "correlation_id": "CORR-G1-WEEKEND",
+      "source_system": "LEDGER",
+      "payload": {
+        "merchant_id": "M-308",
+        "evidence_ids": [
+          "E-5"
+        ],
+        "gross_face": 88,
+        "merchant_discount": 0,
+        "net_payable": 88,
+        "deposit_forfeited": 0,
+        "funding_breakdown": [
+          {
+            "funding_source": "PASS_PREPAID_FUNDS",
+            "amount": 88
+          }
+        ]
+      }
+    },
+    {
+      "event_id": "EVT-0056",
+      "event_type": "MERCHANT_CLAIM_SETTLED",
+      "aggregate_type": "merchant_claim",
+      "aggregate_id": "CL-M-303",
+      "occurred_at": "2026-10-18T09:35:00+08:00",
+      "version": 1,
+      "summary": "M-303 无真实核销可结算；保证金扣划 88 元（对应 R-2004 退款），争议扫码 SCN-9001 挂起",
+      "schedule_version": 2,
+      "correlation_id": "CORR-G1-WEEKEND",
+      "source_system": "LEDGER",
+      "payload": {
+        "merchant_id": "M-303",
+        "evidence_ids": [],
+        "gross_face": 0,
+        "merchant_discount": 0,
+        "net_payable": 0,
+        "deposit_forfeited": 88,
+        "funding_breakdown": [],
+        "pending_reviews": [
+          {
+            "scan_code": "SCN-9001",
+            "evidence_id": "E-4",
+            "reason": "设备时间晚于商户退出生效时间（15:00）"
+          }
+        ]
+      }
+    },
+    {
+      "event_id": "EVT-0057",
+      "event_type": "LEDGER_RECONCILED",
+      "aggregate_type": "settlement_ledger",
+      "aggregate_id": "LEDGER-G1-1018",
+      "occurred_at": "2026-10-18T10:00:00+08:00",
+      "version": 6,
+      "summary": "取消演练清算对账：补偿笔笔有预约、结算笔笔有证据，无悬置错配",
+      "schedule_version": 2,
+      "correlation_id": "CORR-G1-WEEKEND",
+      "source_system": "LEDGER",
+      "payload": {
+        "refunds_total": 688,
+        "alternatives_total": 40,
+        "voided_total": 0,
+        "merchant_settlement_total": 788,
+        "compensation_funding": {
+          "ORGANIZER_CANCELLATION_FUND": 600,
+          "MERCHANT_SELF_BORNE": 88,
+          "CITY_CULTURE_TOURISM_SUBSIDY": 30,
+          "MERCHANT_DEPOSIT_OFFSET": 10
+        },
+        "settlement_funding": {
+          "PASS_PREPAID_FUNDS": 778,
+          "MERCHANT_DEPOSIT_OFFSET": 10
+        },
+        "deposit_custody": {
+          "forfeited": {
+            "M-303": 88,
+            "M-304": 10
+          },
+          "applied": {
+            "MERCHANT_SELF_BORNE": 88,
+            "MERCHANT_DEPOSIT_OFFSET": 10
+          }
+        },
+        "merchant_discount_total": 60,
+        "compensation_count": 5,
+        "settlement_claim_count": 6,
+        "evidence_count": 6,
+        "settled_evidence_count": 5,
+        "unmatched_count": 0,
+        "pending_review_count": 1,
+        "pending_reviews": [
+          {
+            "evidence_id": "E-4",
+            "scan_code": "SCN-9001",
+            "reservation_id": "R-2011",
+            "merchant_id": "M-303"
+          }
+        ]
+      }
+    },
+    {
+      "event_id": "EVT-0058",
+      "event_type": "ATTRIBUTION_REPORT_PUBLISHED",
+      "aggregate_type": "attribution_report",
+      "aggregate_id": "ATTR-G1-1018",
+      "occurred_at": "2026-10-18T11:00:00+08:00",
+      "version": 1,
+      "summary": "G1 周末赛事新增消费归因报告（普通客流基线已钉版，待裁定证据不计入）",
+      "schedule_version": 2,
+      "correlation_id": "CORR-G1-WEEKEND",
+      "source_system": "ANALYTICS",
+      "payload": {
+        "evidence_batches": [
+          "EVB-G1-1018"
+        ],
+        "baseline_dataset_hash": "0d63c8c0c21113a974e3ede37d52c8c42db9e59beb57da0b591f9e6f8a080ac4",
+        "formula": "incremental_amount(area) = Σ amount(SETTLED evidence, match pass holders, area) − control_base(area, 近 4 个非赛事周末均值化基线)",
+        "buckets": [
+          {
+            "dimensions": {
+              "area_id": "A-OLDSTREET"
+            },
+            "merchant_rolled_up": [
+              "M-307"
+            ],
+            "control_base": 22,
+            "redemption_count": 1,
+            "redemption_amount": 30,
+            "incremental_amount": 8,
+            "incremental_pct": 36.4
+          },
+          {
+            "dimensions": {
+              "area_id": "A-WATERFRONT"
+            },
+            "merchant_rolled_up": [
+              "M-302"
+            ],
+            "control_base": 420,
+            "redemption_count": 1,
+            "redemption_amount": 600,
+            "incremental_amount": 180,
+            "incremental_pct": 42.9
+          },
+          {
+            "dimensions": {
+              "area_id": "A-STADIUM-CORE"
+            },
+            "merchant_rolled_up": [
+              "M-304",
+              "M-305"
+            ],
+            "control_base": 95,
+            "redemption_count": 2,
+            "redemption_amount": 130,
+            "incremental_amount": 35,
+            "incremental_pct": 36.8
+          },
+          {
+            "dimensions": {
+              "area_id": "A-WESTGATE"
+            },
+            "merchant_rolled_up": [
+              "M-308"
+            ],
+            "control_base": 30,
+            "redemption_count": 1,
+            "redemption_amount": 88,
+            "incremental_amount": 58,
+            "incremental_pct": 193.3
+          }
+        ],
+        "suppressed_buckets": [
+          {
+            "dimensions": {
+              "merchant_id": "M-307"
+            },
+            "reason": "单元格核销笔数 1 < 最小阈值 5，已并入街区 A-OLDSTREET 汇总"
+          }
+        ],
+        "totals": {
+          "redemption_count": 5,
+          "redemption_amount": 848,
+          "control_base": 567,
+          "incremental_amount": 281
+        },
+        "excluded_evidence": [
+          "E-4"
+        ]
+      }
+    }
+  ]
+}

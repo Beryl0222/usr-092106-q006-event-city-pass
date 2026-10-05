@@ -1,6 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "赛事城市联动通行证领域事件",
+  "description": "跨系统消息统一使用本信封。事件只追加、不原地改写；消费端以 event_id（扫码等客户端动作用 idempotency_key）去重。",
   "type": "object",
   "required": [
     "event_id",
@@ -14,16 +15,33 @@
   "properties": {
     "event_id": {
       "type": "string",
-      "minLength": 1
+      "minLength": 1,
+      "description": "全局唯一事件标识；同标识重复投递视为同一条消息"
     },
     "event_type": {
       "type": "string",
       "enum": [
+        "SCHEDULE_PUBLISHED",
+        "SCHEDULE_REVISED",
+        "SCHEDULE_CANCELLED",
         "PASS_ISSUED",
+        "PASS_COMPANIONS_UPDATED",
+        "PASS_QUALIFICATION_TRANSFERRED",
         "BENEFIT_RESERVED",
         "CAPACITY_RESTRICTED",
+        "INVENTORY_SLOT_FROZEN",
+        "MERCHANT_WITHDRAWN",
+        "RESERVATION_DISPLACED",
         "BENEFIT_REDEEMED",
-        "COMPENSATION_POSTED"
+        "DIVERSION_OFFERED",
+        "DIVERSION_SELECTED",
+        "COMPENSATION_POSTED",
+        "COMPENSATION_VOIDED",
+        "MERCHANT_CLAIM_SETTLED",
+        "LEDGER_RECONCILED",
+        "REDEMPTION_EVIDENCE_RECORDED",
+        "EVIDENCE_BATCH_SEALED",
+        "ATTRIBUTION_REPORT_PUBLISHED"
       ]
     },
     "aggregate_type": {
@@ -32,7 +50,12 @@
         "event_schedule",
         "city_pass",
         "benefit_reservation",
-        "merchant_claim"
+        "benefit_inventory",
+        "merchant_claim",
+        "diversion_route",
+        "settlement_ledger",
+        "redemption_evidence",
+        "attribution_report"
       ]
     },
     "aggregate_id": {
@@ -41,15 +64,50 @@
     },
     "occurred_at": {
       "type": "string",
-      "format": "date-time"
+      "format": "date-time",
+      "description": "事件事实发生时间（非入帐时间）；离线扫码以设备记录时间为准"
     },
     "version": {
       "type": "integer",
-      "minimum": 1
+      "minimum": 1,
+      "description": "同一聚合内严格递增；业务更正产生后继版本，不回写旧事件"
     },
     "summary": {
       "type": "string",
       "minLength": 1
+    },
+    "schedule_version": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "事实发生时对应的赛历版本；赛历取消后产生新版本而非修改旧版本"
+    },
+    "correlation_id": {
+      "type": "string",
+      "description": "串联同一通行证/同一处置链路的关联标识"
+    },
+    "causation_id": {
+      "type": "string",
+      "description": "直接触发本事件的上游事件 event_id"
+    },
+    "source_system": {
+      "type": "string",
+      "enum": [
+        "TICKETING",
+        "CITY_PASS",
+        "TRAFFIC_AUTHORITY",
+        "MERCHANT_POS",
+        "NOTIFICATION",
+        "LEDGER",
+        "ANALYTICS"
+      ]
+    },
+    "idempotency_key": {
+      "type": "string",
+      "description": "业务动作幂等键（如扫码流水号）；断网重传时同键只生效一次"
+    },
+    "payload": {
+      "type": "object",
+      "description": "各事件类型的业务字段，见 docs/event-catalog.md"
     }
   },
   "additionalProperties": true
